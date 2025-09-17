@@ -16,3 +16,10 @@ spring:
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
+httpClient:
+  truststore:
+    file: C:\entornos\Acciona\workspaces\spring-boot-4\src\main\resources\certs\cacerts
+    password: changeit
+  testApi:
+    name: testApi
+    baseUrl: https://restful-api.dev/
