@@ -1,12 +1,11 @@
 package com.sergio.springboot4.api;
 
 import com.sergio.springboot4.dto.CountryDto;
+import com.sergio.springboot4.dto.CountrySmallDto;
 import com.sergio.springboot4.model.Country;
 import com.sergio.springboot4.service.CountryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +30,7 @@ public class CountryController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", version = "1")
     public ResponseEntity<CountryDto> findById(@PathVariable int id) {
         Optional<Country> countryOpt = countryService.findById(id);
         return countryOpt.map(country ->
@@ -39,14 +38,21 @@ public class CountryController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping
-    public List<CountryDto> findAll() {
+    @GetMapping(version = "1")
+    public List<CountryDto> findAll_v1() {
         return countryService.findAll().stream()
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/byName/{name}")
+    @GetMapping(version = "2")
+    public List<CountrySmallDto> findAll_v2() {
+        return countryService.findAll().stream()
+                .map(this::convertToSmallDto)
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping(value = "/byName/{name}", version = "1")
     public List<CountryDto> findCountriesByName(@PathVariable String name) {
         return countryService.findCountriesByName(name).stream()
                 .map(this::convertToDto)
@@ -55,5 +61,9 @@ public class CountryController {
 
     private CountryDto convertToDto(Country country) {
         return modelMapper.map(country, CountryDto.class);
+    }
+
+    private CountrySmallDto convertToSmallDto(Country country) {
+        return modelMapper.map(country, CountrySmallDto.class);
     }
 }
