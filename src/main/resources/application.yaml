@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: spring-boot-4
+  aot:
+    repositories:
+      enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: password
+    url: jdbc:mysql://localhost:3306/mysql-db
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false

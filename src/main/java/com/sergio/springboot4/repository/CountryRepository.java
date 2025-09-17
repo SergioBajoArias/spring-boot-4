@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CountryRepository extends CrudRepository<Country, Integer> {
 
-    @Query("SELECT country FROM Country country WHERE country.nicename LIKE %:name%")
+    @Query("SELECT country FROM Country country WHERE country.name ILIKE %:name%")
     List<Country> findCountriesByName(String name);
 }
