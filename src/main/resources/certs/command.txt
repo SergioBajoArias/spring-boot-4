@@ -1,4 +1,0 @@
-C:\Users\sergio.bajo\.jdks\graalvm-jdk-24.0.2\bin\keytool.exe -import -alias shophos-root -keystore C:\Users\sergio.bajo\.jdks\graalvm-jdk-24.0.2\lib\security\cacerts -file sophos-endpoint-ec-root.crt
-C:\Users\sergio.bajo\.jdks\graalvm-jdk-24.0.2\bin\keytool.exe -import -alias restful-api -keystore C:\Users\sergio.bajo\.jdks\graalvm-jdk-24.0.2\lib\security\cacerts -file restful-api.dev.crt
-
-C:\Users\sergio.bajo\.jdks\graalvm-jdk-24.0.2\bin\keytool.exe -list -keystore C:\Users\sergio.bajo\.jdks\graalvm-jdk-24.0.2\lib\security\cacerts
