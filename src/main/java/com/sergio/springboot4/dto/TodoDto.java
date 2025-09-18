@@ -9,7 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ObjectDto {
+public class TodoDto {
     private int id;
-    private String name;
+    private int userId;
+    private String title;
+    private boolean completed;
 }
